@@ -1,0 +1,22 @@
+Master:
+  ImageTag: lts-alpine
+  ServiceType: ClusterIP
+  HostName: jenkins.obsandbox.mywire.org
+  InstallPlugins:
+    - kubernetes:1.12.4
+    - workflow-aggregator:2.5
+    - workflow-job:2.24
+    - credentials-binding:1.16
+    - git:3.9.1
+    - ThinBackup:1.9
+  JavaOpts: "-Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85"
+
+
+Agent:
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "512Mi"
+    limits:
+      cpu: "200m"
+      memory: "512Mi"
